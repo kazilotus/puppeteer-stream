@@ -1,13 +1,17 @@
-import puppeteer, {
+import {
 	LaunchOptions,
 	Browser,
 	Page,
 	BrowserLaunchArgumentOptions,
 	BrowserConnectOptions,
 } from "puppeteer";
+import puppeteer from "puppeteer-extra";
+
 import { Readable, ReadableOptions } from "stream";
 import path from "path";
 
+import StealthPlugin from "puppeteer-extra-plugin-stealth";
+puppeteer.use(StealthPlugin());
 export class Stream extends Readable {
 	constructor(private page: Page, options?: ReadableOptions) {
 		super(options);
